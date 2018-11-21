@@ -57,5 +57,4 @@ app.controller('mController', function($scope, $interval, $http) {
         $('.loader').hide();
       }
 
-    }
 });
