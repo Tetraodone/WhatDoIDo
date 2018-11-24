@@ -18,20 +18,15 @@
     <t1>{{title}}</t1>
   </div>
   <t2></t2>
-  <button ng-click="findEventActivity()">Find something!</button><br><br>
+  <button ng-click="displayActivity()">Find something!</button><br><br>
   Enable planned events<br>
   <label class="switch">
-    <input type="checkbox" checked>
+    <input type="checkbox" ng-model="eventCheckBox" checked>
     <span class="slider round"></span>
   </label>
   <div class="result">
     <div class="loader"></div>
     {{activity.name}}<br>{{activity.longLocation}}<br>{{activity.startTime}}
   </div>
-
-  <script>
-  // var username = 'notnamed';
-  // var password = '4skhsb56rsvd';
-  </script>
 </body>
 </html>

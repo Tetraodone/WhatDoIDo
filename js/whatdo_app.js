@@ -9,6 +9,7 @@ app.filter('reverse', function() {
 app.controller('mController', function($scope, $interval, $http) {
     $scope.title = 'What do I do today?'
     $scope.adhocActivities = ['Go for a walk!', 'Have a picnic!', 'Draw something!'];
+    //Required Vars
     $scope._data = null;
     $scope.activity;
 
@@ -24,14 +25,16 @@ app.controller('mController', function($scope, $interval, $http) {
       }
     }
 
-    $scope.findActivity = function(){
+    $scope.findAdHocActivity = function(){
       //generate ad-hoc activity from list
-      var activity = '';
-      //loop to avoid the same activity
-      do {
-        activity = $scope.adhocActivities[Math.floor(Math.random() * $scope.adhocActivities.length)];
-      } while (activity === $scope.result);
-      //$scope.activity = new $scope.newActivity(x);
+      var activityName = $scope.adhocActivities[Math.floor(Math.random() * $scope.adhocActivities.length)];
+      var activityObj = function(_name){
+        this.name = _name;
+        this.longLocation = '';
+        this.startTime = '';
+      }
+      $scope.activity = new activityObj(activityName);
+
     }
 
     $scope.findEventActivity = function(){
@@ -56,5 +59,19 @@ app.controller('mController', function($scope, $interval, $http) {
         $scope.result = activity.name + ' at ' + activity.location_summary + " starting at " + activity.datetime_start;
         $('.loader').hide();
       }
+    }
+
+    $scope.displayActivity = function(){
+      if($scope.eventCheckBox){
+        var random_boolean = Math.random() >= 0.5;
+        if(random_boolean){
+          $scope.findEventActivity();
+        } else {
+          $scope.findAdHocActivity();
+        }
+      } else {
+        $scope.findAdHocActivity();
+      }
+    }
 
 });
