@@ -12,6 +12,7 @@ app.controller('mController', function($scope, $interval, $http) {
     //Required Vars
     $scope._data = null;
     $scope.activity;
+    $scope.last = '';
 
     $scope.newActivity = function(obj){
       this.name = obj.name;
@@ -27,14 +28,20 @@ app.controller('mController', function($scope, $interval, $http) {
 
     $scope.findAdHocActivity = function(){
       //generate ad-hoc activity from list
-      var activityName = $scope.adhocActivities[Math.floor(Math.random() * $scope.adhocActivities.length)];
-      var activityObj = function(_name){
+      var activityName;
+      //loop to avoid same activity
+      do{
+        activityName = $scope.adhocActivities[Math.floor(Math.random() * $scope.adhocActivities.length)];
+      } while (activityName === $scope.last)
+
+      var activityObj = function(_name, _location = false){
         this.name = _name;
         this.longLocation = '';
         this.startTime = '';
+        this.allowLocation = _location;
       }
       $scope.activity = new activityObj(activityName);
-
+      $scope.last = $scope.activity.name;
     }
 
     $scope.findEventActivity = function(){
