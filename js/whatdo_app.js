@@ -14,13 +14,14 @@ app.controller('mController', function($scope, $interval, $http) {
     $scope._data = null;
     $scope.activity;
     $scope.last = '';
+    $scope.lastLocation = '';
     $scope.onlineStatus = true;
     $scope.myLocation=null;
 
     $scope.newActivity = function(obj){
       this.name = obj.name;
       this.longLocation = obj.location_summary;
-      this.startTime = obj.datetime_start
+      this.endTime = obj.datetime_end
       this.pointLocation = obj.point
       this.keyWords = function(){
         //Return keywords for user to dislike / dislike
@@ -30,6 +31,7 @@ app.controller('mController', function($scope, $interval, $http) {
     }
 
     $scope.findAdHocActivity = function(){
+      $('.eventText').hide();
       //generate ad-hoc activity from list
       var activityName;
       //loop to avoid same activity
@@ -46,15 +48,14 @@ app.controller('mController', function($scope, $interval, $http) {
       }
       $scope.activity = new activityObj(activityName);
       $scope.last = $scope.activity.name;
+      $scope.initMap($scope.myLocation.coords.latitude, $scope.myLocation.coords.longitude, false)
     }
 
     $scope.findEventActivity = function(){
+      $('.eventText').show();
       //fetch function / event activity from eventfinda api
       $('.loader').show();
       if ($scope._data===null){
-        do{
-          //wait
-        }while($scope.myLocation===null)
         var url = "./php/getData.php?lat=";
         url += $scope.myLocation.coords.latitude + '&long=' + $scope.myLocation.coords.longitude;
 
@@ -117,10 +118,17 @@ app.controller('mController', function($scope, $interval, $http) {
       }
     }
 
-    $scope.initMap = function(_lat = -36.848448, _lng = 174.762191){
+    $scope.getLocation();
+
+    $scope.initMap = function(_lat = $scope.myLocation.coords.latitude, _lng = $scope.myLocation.coords.longitude, _mark = true){
+      if($scope.lastLocation===_lat){
+
+      } else {
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: _lat, lng: _lng},
         zoom: 15,
+        disableDefaultUI: true,
+        zoomControl: true,
         styles: [
   {
     "elementType": "geometry",
@@ -303,6 +311,12 @@ app.controller('mController', function($scope, $interval, $http) {
 ]
       });
       var marker = new google.maps.Marker({position: {lat: _lat, lng: _lng}, map: map});
+      if(!_mark){
+        marker.setMap(null);
+      }
+
+    }
+    $scope.lastLocation = _lat;
     }
 
 

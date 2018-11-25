@@ -13,3 +13,8 @@
   display:none;
   font-size:2vh;
 }
+@media only screen and (max-width: 768px) {
+  .alert{
+    max-width:100%;
+  }
+}

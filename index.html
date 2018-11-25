@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>What do I do</title>
   <meta name="Random event generator" content="What do I do">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Corey Bourke" content="SitePoint">
   <script src="./js/angular.js"></script>
   <script src="./js/whatdo_app.js"></script>
@@ -12,33 +13,39 @@
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
   <link rel="stylesheet" type="text/css" href="./css/alert.css">
-  <script
-    src="http://maps.googleapis.com/maps/api/js?key=">
-  </script>
+  <script src='./js/config.js'></script>
 </head>
 
-<body ng-app="Whatdo" ng-controller="mController" ng-init="initMap()">
+<body ng-app="Whatdo" ng-controller="mController">
   <div class="alert"></div>
   <div class="header">
     <t1>{{title}}</t1>
   </div>
   <t2></t2>
   <button ng-click="displayActivity()">Find something!</button><br><br>
-  Enable planned events<br>
+  <i1>Enable planned events</i1><br>
   <label class="switch">
     <input type="checkbox" ng-click="onlineStatus = true;getLocation()" ng-model="eventCheckBox" checked>
     <span class="slider round"></span>
   </label>
   <div class="result">
     <div class="loader"></div>
-    {{activity.name}}<br>{{activity.longLocation}}<br>{{activity.startTime}}
+    <t2>{{activity.name}}</t2><br><i1>{{activity.longLocation}}<br> <span class="eventText">Ends at</span> {{activity.endTime}}</i1>
   </div>
   <br>
   <div id="map"></div>
+  <br>
+  Support for Australia coming soon!
   <script>
+  function loadScript() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'http://maps.googleapis.com/maps/api/js?key=' +
+        '&key=' + config.mapsKey; //& needed
+    document.body.appendChild(script);
+  }
 
+  window.onload = loadScript;
   </script>
-
-
 </body>
 </html>

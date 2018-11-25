@@ -15,6 +15,13 @@ t1{
   font-size: 9vw;
   color:$gColor;
 }
+t2{
+  font-size: 4.5vw;
+  color:$gColor;
+}
+i1{
+  color:#767676;
+}
 
 button {
   font-size:2vw;
@@ -36,7 +43,6 @@ button {
 
 .result{
   margin-top:5vh;
-  font-size:2vw;
 }
 
 .switch {
@@ -122,6 +128,9 @@ input:checked + .slider:before {
   100% { transform: rotate(360deg); }
 }
 
+.eventText{
+  display:none;
+}
 
 #map{
   height: 40vh;  /* The height is 400 pixels */
@@ -132,5 +141,23 @@ input:checked + .slider:before {
   &:hover{
     opacity:1;
     transition:1s;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  t1{
+    font-size: 12vw;
+    color:$gColor;
+  }
+  t2{
+    font-size: 7vw;
+    color:$gColor;
+  }
+  .result{
+    line-height: 3vh;
+  }
+  button {
+    font-size:5vw;
+    padding:2vw;
   }
 }

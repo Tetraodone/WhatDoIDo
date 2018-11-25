@@ -13,6 +13,15 @@ t1 {
   color: #535353;
 }
 
+t2 {
+  font-size: 4.5vw;
+  color: #535353;
+}
+
+i1 {
+  color: #767676;
+}
+
 button {
   font-size: 2vw;
   padding: 0.7vw;
@@ -35,7 +44,6 @@ button:focus {
 
 .result {
   margin-top: 5vh;
-  font-size: 2vw;
 }
 
 .switch {
@@ -124,6 +132,10 @@ input:checked + .slider:before {
     transform: rotate(360deg);
   }
 }
+.eventText {
+  display: none;
+}
+
 #map {
   height: 40vh;
   /* The height is 400 pixels */
@@ -136,6 +148,27 @@ input:checked + .slider:before {
 #map:hover {
   opacity: 1;
   transition: 1s;
+}
+
+@media only screen and (max-width: 768px) {
+  t1 {
+    font-size: 12vw;
+    color: #535353;
+  }
+
+  t2 {
+    font-size: 7vw;
+    color: #535353;
+  }
+
+  .result {
+    line-height: 3vh;
+  }
+
+  button {
+    font-size: 5vw;
+    padding: 2vw;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
