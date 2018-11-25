@@ -11,9 +11,14 @@
   <script src="./js/jquery-3.2.1.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
+  <link rel="stylesheet" type="text/css" href="./css/alert.css">
+  <script
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAq3zs8ekzWJL5GYx8z1nYEMTpjkMzPvhc">
+  </script>
 </head>
 
-<body ng-app="Whatdo" ng-controller="mController">
+<body ng-app="Whatdo" ng-controller="mController" ng-init="initMap()">
+  <div class="alert"></div>
   <div class="header">
     <t1>{{title}}</t1>
   </div>
@@ -21,12 +26,19 @@
   <button ng-click="displayActivity()">Find something!</button><br><br>
   Enable planned events<br>
   <label class="switch">
-    <input type="checkbox" ng-model="eventCheckBox" checked>
+    <input type="checkbox" ng-click="onlineStatus = true;getLocation()" ng-model="eventCheckBox" checked>
     <span class="slider round"></span>
   </label>
   <div class="result">
     <div class="loader"></div>
     {{activity.name}}<br>{{activity.longLocation}}<br>{{activity.startTime}}
   </div>
+  <br>
+  <div id="map"></div>
+  <script>
+
+  </script>
+
+
 </body>
 </html>

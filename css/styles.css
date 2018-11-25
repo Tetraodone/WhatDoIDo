@@ -75,7 +75,7 @@ button:focus {
 }
 
 input:checked + .slider {
-  background-color: #3E3E3E;
+  background-color: #535353;
 }
 
 input:checked + .slider:before {
@@ -123,6 +123,19 @@ input:checked + .slider:before {
   100% {
     transform: rotate(360deg);
   }
+}
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+  border-radius: 5px;
+  opacity: 0.5;
+  transition: 1s ease-in-out;
+}
+#map:hover {
+  opacity: 1;
+  transition: 1s;
 }
 
 /*# sourceMappingURL=styles.css.map */
