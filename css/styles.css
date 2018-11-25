@@ -98,8 +98,8 @@ input:checked + .slider:before {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #535353;
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   -webkit-animation: spin 2s ease-in-out infinite;
   /* Safari */
   animation: spin 2s ease-in-out infinite;
@@ -125,7 +125,7 @@ input:checked + .slider:before {
   }
 }
 #map {
-  height: 400px;
+  height: 40vh;
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */

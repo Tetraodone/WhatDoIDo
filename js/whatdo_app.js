@@ -1,5 +1,4 @@
-//Maps api key
-//AIzaSyAq3zs8ekzWJL5GYx8z1nYEMTpjkMzPvhc
+
 var app = angular.module("Whatdo",[]);
 
 app.filter('reverse', function() {
