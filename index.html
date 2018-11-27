@@ -7,6 +7,7 @@
   <meta name="Random event generator" content="What do I do">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Corey Bourke" content="SitePoint">
+  <meta name="theme-color" content="#E7E7E7">
   <script src="./js/angular.js"></script>
   <script src="./js/whatdo_app.js"></script>
   <script src="./js/jquery-3.2.1.min.js"></script>
@@ -14,38 +15,33 @@
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
   <link rel="stylesheet" type="text/css" href="./css/alert.css">
   <script src='./js/config.js'></script>
+  <script defer async  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq3zs8ekzWJL5GYx8z1nYEMTpjkMzPvhc"
+  type="text/javascript"></script>
 </head>
 
-<body ng-app="Whatdo" ng-controller="mController">
+<body ng-app="Whatdo" ng-controller="mController" ng-init="getLocation()">
   <div class="alert"></div>
+  <div style="display:none;" id="burger">☰</div>
+  <div id="menu">
+  </div>
   <div class="header">
     <t1>{{title}}</t1>
   </div>
   <t2></t2>
-  <button ng-click="displayActivity()">Find something!</button><br><br>
+  <button id="submit" ng-click="displayActivity()">{{submitText}}</button><br><br>
   <i1>Enable planned events</i1><br>
   <label class="switch">
-    <input type="checkbox" ng-click="onlineStatus = true;getLocation()" ng-model="eventCheckBox" checked>
+    <input type="checkbox" ng-click="onlineStatus = true;getLocation()" ng-model="eventCheckBox" ng-init="eventCheckBox=true">
     <span class="slider round"></span>
   </label>
   <div class="result">
     <div class="loader"></div>
-    <t2>{{activity.name}}</t2><br><i1>{{activity.longLocation}}<br> <span class="eventText">Ends at</span> {{activity.endTime}}</i1>
+    <t2>{{activity.name}} </t2><br><i1>{{activity.longLocation}}<br> <span class="eventText">Ends at</span> {{activity.endTime}}</i1>
   </div>
   <br>
   <div id="map"></div>
   <br>
-  Support for Australia coming soon!
-  <script>
-  function loadScript() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'http://maps.googleapis.com/maps/api/js?key=' +
-        '&key=' + config.mapsKey; //& needed
-    document.body.appendChild(script);
-  }
-
-  window.onload = loadScript;
-  </script>
+  <select ng-model="selectedName" ng-click="_data=null" ng-options="x for x in country">
+  </select>
 </body>
 </html>

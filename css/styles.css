@@ -103,9 +103,9 @@ input:checked + .slider:before {
 
 .loader {
   display: none;
-  border: 16px solid #f3f3f3;
+  border: 2vw solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #535353;
+  border-top: 2vw solid #535353;
   width: 60px;
   height: 60px;
   -webkit-animation: spin 2s ease-in-out infinite;
@@ -133,6 +133,22 @@ input:checked + .slider:before {
   }
 }
 .eventText {
+  display: none;
+}
+
+#burger {
+  position: fixed;
+  font-family: serif;
+  left: 3vh;
+  top: 3vh;
+  color: #535353;
+  font-size: 8vw;
+  cursor: pointer;
+  font-weight: 100;
+}
+
+#favIcon {
+  cursor: pointer;
   display: none;
 }
 
